@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::view('hello','hello_world');
+route::view('dashboard','hello_world');

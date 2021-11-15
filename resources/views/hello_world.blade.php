@@ -1459,7 +1459,7 @@
       <b>Version</b> 3.2.0-rc
     </div>
   </footer>
-
+  <!-- perubahan dari irham di line ini-->
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

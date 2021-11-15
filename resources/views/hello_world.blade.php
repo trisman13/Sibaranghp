@@ -1502,4 +1502,4 @@
 <script src="{{ asset('template')}}/dist/js/pages/dashboard.js"></script>
 </body>
 </html>
-
+<!-- mencoba sinkronisasi di github -->

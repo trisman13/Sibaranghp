@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::view('dashboard','hello_world');
+route::view('dashboard','layouts.contents.dashboard');
+route::view('dashboard-2','layouts.contents.dashboard2');

@@ -9,12 +9,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Surat Bukti Penindakan</h1>
+            <h1 class="m-0">List Barang</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">SBP</li>
+              <li class="breadcrumb-item active">Barang</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,14 +30,14 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Surat Bukti Penindakan</h3>
+                  <h3 class="card-title">Barang</h3>
                   @if(session('success'))
                   <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h5><i class="icon fas fa-check"></i>{{session('success')}}</h5>
+                    <h5><i class="icon fas fa-check"></i>{{ session('success') }}</h5>
                   </div>
                   @endif
-  
+
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -50,44 +50,48 @@
                     </div>
                   </div>
                   <div class="mt-5" style="max-width: 100px">
-                    <a role="button" href="{{ route('sbp-list')}}" class="btn btn-block btn-primary btn-sm"> List SBP</a>
+                    <a role="button" href="{{ route('barang.list')}}" class="btn btn-block btn-primary btn-sm"> List Barang</a>
                 </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover text-nowrap">
                     <thead>
-                      <tr>
-                        <th>No.</th>
-                        <th>Nomor Surat</th>
-                        <th>Tanggal Keluar</th>
-                        <th>Surat Keputusan BDN</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($sbp as $surat)
-                      <tr>
-                        <td>{{ $loop->iteration}}</td>
-                        <td>{{ $surat->nomor_surat}}</td>
-                        <td>{{ $surat->tanggal_keluar_surat}}</td>
-                        <td>{{ $surat->id_surat_kep_bdn}}</td>
-                        <td>{{ $surat->status}}</td>
+                        <tr>
+                          <th>No.</th>
+                          <th>Nama</th>
+                          <th>Jenis</th>
+                          <th>Jumlah</th>
+                          <th>Satuan</th>
+                          <th>Merk</th>
+                          <th>Pemilik</th>
+                          <th>Status</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($barang as $brg)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $brg->nama }}</td>
+                          <td>{{ $brg->jenis != null ? $brg->jenis : $brg->jenis_lain }}</td>
+                          <td>{{ $brg->jumlah }}</td>
+                          <td>{{ $brg->satuan }}</td>
+                          <td>{{ $brg->merk }}</td>
+                          <td>{{ $brg->pemilik }}</td>
+                          <td>{{ $brg->status }}</td>
                         <td>
                           <div style="max-width: 80px">
                             <a
                               role="button"
-                              onclick="return confirm ('Apa yakin ingin mengembalikan data {{$surat->nomor_surat}} ini?')"
+                              onclick="return confirm ('Apa yakin ingin mengembalikan data {{$brg->nama }} ini?')"
                               class="btn btn-block btn-warning btn-sm"
-                              href="{{ route('sbp.restore',$surat ->id)}}"> Kembalikan </a> 
-
-                            <a 
+                              href="{{ route('barang.restore', $brg->id) }}">Kembalikan</a>
+                            <a
                               role="button"
-                              onclick="return confirm ('Apa yakin ingin menghapus data {{$surat->nomor_surat}} ini Permanen?')"
+                              onclick="return confirm ('Apa yakin ingin menghapus data {{$brg->nama }} ini Permanen?')"
                               class="btn btn-block btn-danger btn-sm d-inline-block"
-                              href="{{ route('sbp.destroy.permanen',$surat ->id)}}">Hapus</a>
+                              href="{{ route('barang.destroy.permanent', $brg->id) }}">Hapus</a>
                         </div>
                         </td>
                       </tr>

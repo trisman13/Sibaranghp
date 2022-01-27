@@ -37,27 +37,27 @@
                     <h5><i class="icon fas fa-check"></i>{{session('success')}}</h5>
                   </div>
                   @endif
-  
+
                   <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                       <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-  
+
                       <div class="input-group-append">
                         <button type="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
-                    </div>   
+                    </div>
                   </div>
                   <div class="mt-5" style="max-width: 100px">
-                    <a 
-                      role="button" 
-                      href="{{ route('sbp-create')}}" 
-                      class="btn btn-block btn-success btn-sm"> Tambah Data</a>
-                    <a 
-                      role="button" 
-                      href="{{ route('sbp.trash')}}" 
-                      class="btn btn-block btn-success btn-sm"> Sampah </a>
+                    <a
+                      role="button"
+                      href="{{ route('sbp-create')}}"
+                      class="btn btn-block btn-primary btn-sm"> Tambah Data</a>
+                    <a
+                      role="button"
+                      href="{{ route('sbp.trash')}}"
+                      class="btn btn-block btn-danger btn-sm"> Sampah </a>
                 </div>
                 </div>
                 <!-- /.card-header -->
@@ -71,7 +71,7 @@
                         <th>Surat Keputusan BDN</th>
                         <th>Status</th>
                         <th>Aksi</th>
-                        
+
                       </tr>
                     </thead>
                     <tbody>

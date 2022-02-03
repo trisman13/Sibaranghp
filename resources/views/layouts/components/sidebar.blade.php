@@ -38,24 +38,28 @@
            with font-awesome or any other icon font library -->
 
         <li class="nav-header">MASTER DATA</li>
+
         <li class="nav-item">
           <a href="{{ route('sbp-list') }}" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
-            <p>
-              Surat Bukti Penindakan
-              {{-- <span class="badge badge-info right">2</span> --}}
-            </p>
+            <p>Surat Bukti Penindakan</p>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="{{ route('barang.list') }}" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
-            <p>
-              Barang
-              {{-- <span class="badge badge-info right">2</span> --}}
-            </p>
+            <p>Barang</p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="{{ route('satuan.list') }}" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>Satuan</p>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a href="pages/gallery.html" class="nav-link">
             <i class="nav-icon far fa-image"></i>

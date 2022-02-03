@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{SbpController,
-                            BarangController};
+                            BarangController,
+                            SatuanController};
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,9 @@ Route::put('/barang/ubah/{id}', [BarangController::class, 'update'])->name('bara
 Route::get('/barang/hapus/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
 Route::get('/barang/hapus-permanen/{id}', [BarangController::class, 'destroyPermanent'])->name('barang.destroy.permanent');
 Route::get('/barang/restore/{id}', [BarangController::class, 'restore'])->name('barang.restore');
+
+Route::get('/satuan', [SatuanController::class, 'index'])->name('satuan.list');
+Route::post('/satuan/buat', [SatuanController::class, 'create'])->name('satuan.create');
+Route::get('/satuan/ubah/{id}', [SatuanController::class, 'show'])->name('satuan.edit');
+Route::put('/satuan/ubah/{id}', [SatuanController::class, 'update'])->name('satuan.update');
+Route::get('/satuan/hapus/{id}', [SatuanController::class, 'destroy'])->name('satuan.destroy');

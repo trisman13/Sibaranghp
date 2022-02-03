@@ -3,33 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\SuratBuktiPenindakan as Model;
 
-class SbpController extends Controller
+use App\Models\Satuan as Model;
+
+class SatuanController extends Controller
 {
-    private static $folder = 'layouts.contents.SBP.';
+    private static $folder = 'layouts.contents.satuan.';
 
     public function index()
     {
-        $sbp = Model::all();
-        return view(self::$folder.'sbp-list', compact('sbp'));
-    }
-
-    public function trash()
-    {
-        $sbp = Model::onlyTrashed()->get();
-        return view(self::$folder.'sbp-trash', compact('sbp'));
+        $data = Model::all();
+        return view(self::$folder.'satuan-list', compact('data'));
     }
 
     public function create()
     {
-        return view(self::$folder.'sbp-create');
+        return view(self::$folder.'satuan-create');
     }
 
     public function show($id)
     {
-        $sbp = SuratBuktiPenindakan::find($id);
-        return view('sbp-edit', compact('sbp'));
+        $data = Model::find($id);
+        return view(self::$folder.'satuan-edit', compact('data'));
     }
 
     public function store(Request $request)
@@ -44,7 +39,7 @@ class SbpController extends Controller
         $sbp->tanggal_keluar_surat = $request->tanggal_keluar_surat;
         $sbp->save();
 
-        return redirect()->route('sbp-list')->with('success','Surat Bukti Penindakan Berhasil Tersimpan');
+        return redirect()->route('satuan-list')->with('success','Surat Bukti Penindakan Berhasil Tersimpan');
     }
 
     public function update(Request $request, $id)
@@ -67,19 +62,5 @@ class SbpController extends Controller
         $sbp->delete();
 
         return redirect()->route('sbp-list')->with('success','Surat Bukti Penindakan Berhasil Terhapus');
-    }
-
-    public function destroyPermanen($id)
-    {
-        $sbp = Model::onlyTrashed()->find($id)->forceDelete();
-
-        return redirect()->back()->with('success','Surat Bukti Penindakan Berhasil Terhapus Permanen');
-    }
-
-    public function restore($id)
-    {
-        $sbp = Model::onlyTrashed()->find($id)->restore();
-
-        return redirect()->back()->with('success','Surat Bukti Penindakan Berhasil dikembalikan');
     }
 }

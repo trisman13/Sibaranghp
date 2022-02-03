@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\SuratBuktiPenindakan::factory(10)->create();
         \App\Models\Barang::factory(10)->create();
+        \App\Models\Satuan::factory(3)->create();
     }
 }

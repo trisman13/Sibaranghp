@@ -38,29 +38,69 @@
                 <form method="post" action="{{ route('sbp.store')}}">
                     @csrf
                   <div class="card-body">
-                    <div class="form-group">
-                    <label for="nomor_surat">Nomor Surat</label>
-                    @error('nomor_surat')<p class="text-danger">{{$message}}</p> @enderror
-                    <input value="{{old('nomor_surat')}}" type="text" class="form-control" id="nommor_surat" name="nomor_surat" placeholder="Masukkan Nomor Surat">
-                    </div>
 
                     <div class="form-group">
-                    <label for="tanggal_keluar_surat">Tanggal Keluar</label>
-                    @error('tanggal_keluar_surat')<p class="text-danger">{{$message}}</p> @enderror
-                    <input value="{{old('tanggal_keluar_surat')}}" type="date" class="form-control" id="tanggal_keluar_surat" name="tanggal_keluar_surat"
-                    placeholder="Masukkan Tanggal Surat">
-                    </div>
+                      <label for="nomor_surat">Nomor Surat</label>
+                      @error('nomor_surat') <p class="text-danger">{{ $message }}</p> @enderror
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Masukkan Nomor Surat"
+                        id="nomor_surat"
+                        name="nomor_surat"
+                        value="{{ old('nomor_surat') }}">
+                      </div>
+
+                    <div class="form-group">
+                      <label for="tanggal_keluar_surat">Tanggal Keluar</label>
+                      @error('tanggal_keluar_surat') <p class="text-danger">{{ $message }}</p> @enderror
+                      <input
+                        class="form-control"
+                        type="date"
+                        placeholder="Masukkan Tanggal Surat"
+                        id="tanggal_keluar_surat"
+                        name="tanggal_keluar_surat"
+                        value="{{ old('tanggal_keluar_surat') }}">
+                      </div>
+
+                    <br><br>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Nama</th>
+                          <th>Jenis</th>
+                          <th>Jumlah</th>
+                          <th>Satuan</th>
+                          <th>Merek</th>
+                          <th>Pemilik</th>
+                          <th style="width: 40px">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Yasmine Schiller</td>
+                          <td>Yasmine Schiller</td>
+                          <td>Yasmine Schiller</td>
+                          <td>Yasmine Schiller</td>
+                          <td>Yasmine Schiller</td>
+                          <td>Yasmine Schiller</td>
+                          <td>Yasmine Schiller</td>
+                          <td>Yasmine Schiller</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
                   </div>
                   <!-- /.card-body -->
-  
+
                   <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </form>
               </div>
               <!-- /.card -->
-  
+
             </div>
             <!--/.col (left) -->
           </div>

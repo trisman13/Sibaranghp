@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Barang;
+use App\Models\Barang as Model;
 
 class BarangController extends Controller
 {
@@ -11,19 +11,19 @@ class BarangController extends Controller
 
     public function index()
     {
-        $barang = Barang::all();
+        $barang = Model::all();
         return view(self::$folder.'barang-list', compact('barang'));
     }
 
     public function trash()
     {
-        $barang = Barang::onlyTrashed()->get();
+        $barang = Model::onlyTrashed()->get();
         return view(self::$folder.'barang-trash', compact('barang'));
     }
 
     public function destroy($id)
     {
-        $barang = Barang::find($id);
+        $barang = Model::find($id);
         $barang->delete();
 
         return redirect()->back()->with('success', 'Barang Berhasil Terhapus.');
@@ -31,7 +31,7 @@ class BarangController extends Controller
 
     public function destroyPermanent($id)
     {
-        $barang = Barang::onlyTrashed()->find($id);
+        $barang = Model::onlyTrashed()->find($id);
         $barang->forceDelete();
 
         return redirect()->back()->with('success', 'Barang Berhasil Dihapus Permanen.');
@@ -39,7 +39,7 @@ class BarangController extends Controller
 
     public function restore($id)
     {
-        $barang = Barang::onlyTrashed()->find($id);
+        $barang = Model::onlyTrashed()->find($id);
         $barang->restore();
 
         return redirect()->back()->with('success', 'Barang Berhasil Dikembalikan.');

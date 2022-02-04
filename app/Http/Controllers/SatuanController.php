@@ -23,44 +23,44 @@ class SatuanController extends Controller
 
     public function show($id)
     {
-        $data = Model::find($id);
-        return view(self::$folder.'satuan-edit', compact('data'));
+        $satuan = Model::find($id);
+        return view(self::$folder.'satuan-edit', compact('satuan'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nomor_surat' => 'required|max:30|unique:surat_bukti_penindakan,nomor_surat',
-            'tanggal_keluar_surat' => 'required|date|max:20'
+            'kode' => 'required|max:30|unique:satuan,kode',
+            'nama' => 'required|max:20'
         ]);
 
-        $sbp = new Model();
-        $sbp->nomor_surat = $request->nomor_surat;
-        $sbp->tanggal_keluar_surat = $request->tanggal_keluar_surat;
-        $sbp->save();
+        $satuan = new Model();
+        $satuan->kode = $request->kode;
+        $satuan->nama = $request->nama;
+        $satuan->save();
 
-        return redirect()->route('satuan-list')->with('success','Surat Bukti Penindakan Berhasil Tersimpan');
+        return redirect()->route('satuan.list')->with('success','Satuan Berhasil Tersimpan');
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nomor_surat' => "required|max:30|unique:surat_bukti_penindakan,nomor_surat,$id",
-            'tanggal_keluar_surat' => 'required|date|max:20'
+            'kode' => "required|max:30|unique:satuan,kode,$id",
+            'nama' => 'required|max:20'
         ]);
-        $sbp = Model::find($id);
-        $sbp->nomor_surat = $request->nomor_surat;
-        $sbp->tanggal_keluar_surat = $request->tanggal_keluar_surat;
-        $sbp->save();
+        $satuan = Model::find($id);
+        $satuan->kode = $request->kode;
+        $satuan->nama = $request->nama;
+        $satuan->save();
 
-        return redirect()->route('sbp-list')->with('success','Surat Bukti Penindakan Berhasil Diubah');
+        return redirect()->route('satuan.list')->with('success',' Satuan Berhasil Diubah');
     }
 
     public function destroy($id)
     {
-        $sbp = Model::find($id);
-        $sbp->delete();
+        $satuan = Model::find($id);
+        $satuan->delete();
 
-        return redirect()->route('sbp-list')->with('success','Surat Bukti Penindakan Berhasil Terhapus');
+        return redirect()->route('satuan.list')->with('success','Satuan Berhasil Terhapus');
     }
 }

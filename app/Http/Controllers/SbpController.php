@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\SuratBuktiPenindakan as Model;
+use App\Models\SuratBuktiPenindakan as Model;
+use App\Models\Satuan;
 
 class SbpController extends Controller
 {
@@ -23,7 +24,8 @@ class SbpController extends Controller
 
     public function create()
     {
-        return view(self::$folder.'sbp-create');
+        $satuan = satuan::all();
+        return view(self::$folder.'sbp-create', compact('satuan'));
     }
 
     public function show($id)

@@ -67,7 +67,7 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr>
-                          <th style="width: 10px">#</th>
+                          <th style="width: 10px">No</th>
                           <th>Nama</th>
                           <th>Jenis</th>
                           <th>Jumlah</th>
@@ -81,9 +81,27 @@
                         <tr>
                           <td>Yasmine Schiller</td>
                           <td>Yasmine Schiller</td>
+                          <td>
+                            <div class="form-group">
+                              <select class="form-control">
+                                <option value="EA">EA</option>
+                                <option value="HT">HT</option>
+                                <option value="MMEA">MMEA</option>
+                                <option value="Lainnya">Lainnya</option>
+
+                              </select>
+                            </div>
+                          </td>
                           <td>Yasmine Schiller</td>
-                          <td>Yasmine Schiller</td>
-                          <td>Yasmine Schiller</td>
+                          <td>
+                            <div class="form-group">
+                              <select class="form-control">
+                                @foreach ($satuan as $st)
+                                <option value="{{$st->id}}"> {{$st->kode}} {{$st->nama}} </option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </td>
                           <td>Yasmine Schiller</td>
                           <td>Yasmine Schiller</td>
                           <td>Yasmine Schiller</td>
